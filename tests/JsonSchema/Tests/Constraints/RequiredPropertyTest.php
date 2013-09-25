@@ -144,6 +144,21 @@ class RequiredPropertyTest extends BaseTestCase
                     "null":{"type":"null", "required": true}
                   }
                 }'
+            ),
+            array(
+                '{
+                }',
+                '{
+                    "type": "object",
+                    "properties": {
+                        "foo": {
+                            "required": ["bar"],
+                            "properties": {
+                                "bar": {"type": "number"}
+                            }
+                         }
+                    }
+                }'
             )
         );
     }
@@ -264,6 +279,20 @@ class RequiredPropertyTest extends BaseTestCase
                     "type": "object",
                     "properties": {
                         "foo": { "required": true }
+                    }
+                }'
+            ),
+            array(
+                '{
+                }',
+                '{
+                    "type": "object",
+                    "properties": {
+                        "foo": {
+                            "properties": {
+                                "bar": { "required": true }
+                            }
+                         }
                     }
                 }'
             )
